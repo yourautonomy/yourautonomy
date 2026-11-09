@@ -1,0 +1,171 @@
+:root {
+  --crema: #FBF7F1;
+  --blanco: #FFFFFF;
+  --superficie: #EFE4D6;
+  --borde: #E5DCD0;
+  --texto: #2B2420;
+  --texto-suave: #6B5E55;
+  --acento: #B4532A;
+  --secundario: #0F6E6E;
+  --texto-sobre-secundario: #D5EDEA;
+
+  --font-titulos: 'Bricolage Grotesque', sans-serif;
+  --font-texto: 'DM Sans', sans-serif;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+  body {
+    font-family: var(--font-texto);
+  }
+.navbar-container{
+    width: 100vph;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px;
+    background-color: var(--crema);
+}
+
+.navbar-name h2{
+    font-size: 30px;
+    font-style: var(--font-titulos);
+    display: flexbox;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #B4532A;          /* terracota */
+  color: #FFFFFF;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 12px 20px;
+  border-radius: 999px;         /* forma de píldora */
+  text-decoration: none;        /* quita el subrayado del link */
+}
+
+.btn-whatsapp i {
+  font-size: 18px;
+}
+
+.btn-whatsapp:hover {
+  background: #973F1D;          /* un poco más oscuro al pasar el mouse */
+}
+
+
+/* ---------- Sección Somos ---------- */
+.somos-container {
+  width: 100%;
+  min-height: 500px;
+  background-color: var(--crema);
+}
+
+.somos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 64px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+
+/* Columna de texto */
+.somos-texto {
+  flex: 1 1 0;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.somos-texto h1 {
+  font-family: var(--font-titulos);
+  font-weight: 800;
+  font-size: 60px;
+  line-height: 1.05;
+}
+
+/* Botones */
+.somos-texto_buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.somos-texto_buttons #platiquemos {
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--acento);
+  color: var(--blanco);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.somos-texto_buttons #platiquemos:hover {
+  background-color: #973F1D;
+}
+
+.somos-texto_buttons #ejemplo {
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  border: 2px solid var(--crema);
+  background-color: var(--blanco);
+  color: var(--acento);
+  font-size: 15px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.somos-texto_buttons #ejemplo:hover {
+  border-color: black;
+}
+
+/* Columna de imagen */
+.somos-img {
+  flex: 0 0 380px;
+}
+
+.somos-img .img-ivan {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 32px;
+}
+
+/* Celular */
+@media (max-width: 700px) {
+  .somos {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .somos-texto h1 {
+    font-size: 40px;
+  }
+  .somos-img {
+    flex-basis: auto;
+    width: 100%;
+    max-width: 380px;
+  }
+}
