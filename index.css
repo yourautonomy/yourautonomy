@@ -169,3 +169,36 @@
     max-width: 380px;
   }
 }
+
+
+/*Servicios*/
+
+.servicios{
+  max-width: 1200px;
+  margin:  0 auto;
+  padding: 88px 24px;
+  background-color: var(--blanco);
+}
+.servicios_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.servicios_container h2{
+  font-size: 44px;
+  font-family: var(--font-titulos);
+  text-align: left;
+}
+
+.servicios_grid{
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+
+.etiqueta{
+  color: var(--secundario);
+}
