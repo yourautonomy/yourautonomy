@@ -385,3 +385,14 @@
     padding: 24px;
   }
 }
+
+
+.footer{
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--blanco);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
