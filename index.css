@@ -256,4 +256,132 @@
   color: var(--texto-suave);
   line-height: 1.6;
 }
-/* ========== Fin Experiencia ========== */
+/* ========== contactanos ========== */
+
+.contactanos{
+  background-color: var(--secundario);
+  color: var(--blanco);
+}
+
+.contactanos-container{
+ max-width: 1200px;
+  margin: 0 auto;
+  padding: 88px 24px;          /* espacio arriba/abajo y a los lados */
+  display: flex;
+  flex-wrap: wrap;             /* en celular el form se va abajo */
+  gap: 48px;
+  align-items: center;
+}
+
+/* Columna de texto */
+.contactanos-container_text {
+  flex: 1 1 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.contactanos-container_text h2 {
+  font-family: var(--font-titulos);
+  font-weight: 800;
+  font-size: 44px;
+  line-height: 1.05;
+  color: var(--blanco);
+}
+
+.contactanos-container_text p {
+  font-size: 18px;
+  color: var(--texto-sobre-secundario);
+}
+
+.contactanos-container_text button {
+  background: var(--blanco);
+  color: var(--secundario);
+  border: 0;
+  padding: 16px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 16px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Columna del formulario */
+.contactanos-container_form {
+  flex: 1 1 400px;
+}
+
+.formulario {
+  background: var(--blanco);
+  color: var(--texto);          /* importante: la sección pone el texto en blanco */
+  padding: 32px;
+  border-radius: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;                    /* espacio entre cada campo */
+}
+
+/* Cada campo: etiqueta arriba, input abajo */
+.formulario .campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formulario label {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* Inputs y textarea */
+.formulario input,
+.formulario textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  background: var(--crema);
+  color: var(--texto);
+  font-size: 16px;              /* 16px evita el zoom automático en iPhone */
+  font-family: inherit;         /* usa DM Sans y no la letra del navegador */
+  box-sizing: border-box;
+}
+
+.formulario textarea {
+  resize: vertical;             /* solo se puede estirar hacia abajo */
+  min-height: 120px;
+}
+
+/* Cuando el usuario da clic en un campo */
+.formulario input:focus,
+.formulario textarea:focus {
+  outline: 2px solid var(--secundario);
+  outline-offset: 1px;
+  background: var(--blanco);
+}
+
+/* Botón de enviar */
+.btn-enviar {
+  background: var(--acento);
+  color: var(--blanco);
+  border: 0;
+  padding: 16px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 16px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-enviar:hover {
+  background: #973F1D;
+}
+
+/* Celular: un poco menos de relleno */
+@media (max-width: 700px) {
+  .formulario {
+    padding: 24px;
+  }
+}

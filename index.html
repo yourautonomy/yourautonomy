@@ -71,28 +71,63 @@
         </div>
     </section>
 
-<section class="experiencia">
-  <div class="experiencia-container">
-    <h2>Experiencia</h2>
-    <div class="experiencia-container_grid">
-      <div class="tarjeta">
-        <img src="/src/img/linux.png" alt="" class="tarjeta-icono">
-        <h3>Linux System Administrator L2</h3>
-        <p>Participé como administrador Linux L2 para uno de los bancos más grandes del mundo.</p>
-      </div>
-      <div class="tarjeta">
-        <img src="/src/img/cloud.webp" alt="" class="tarjeta-icono">
-        <h3>Associate Cloud Ops Engineer</h3>
-        <p>Soporte SaaS en un ambiente multinube para una de las empresas edtech más importantes del mundo.</p>
-      </div>
-      <div class="tarjeta">
-        <img src="/src/img/yalogo.png" alt="" class="tarjeta-icono">
-        <h3>YourAutonomy</h3>
-        <p>Fundador de una empresa de desarrollo de landing pages, automatización y soporte.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <section class="experiencia">
+        <div class="experiencia-container">
+            <h2>Experiencia</h2>
+            <div class="experiencia-container_grid">
+                <div class="tarjeta">
+                    <img src="/src/img/linux.png" alt="" class="tarjeta-icono">
+                    <h3>Linux System Administrator L2</h3>
+                    <p>Participé como administrador Linux L2 para uno de los bancos más grandes del mundo.</p>
+                </div>
+                <div class="tarjeta">
+                    <img src="/src/img/cloud.webp" alt="" class="tarjeta-icono">
+                    <h3>Associate Cloud Ops Engineer</h3>
+                    <p>Soporte SaaS en un ambiente multinube para una de las empresas edtech más importantes del mundo.
+                    </p>
+                </div>
+                <div class="tarjeta">
+                    <img src="/src/img/yalogo.png" alt="" class="tarjeta-icono">
+                    <h3>YourAutonomy</h3>
+                    <p>Fundador de una empresa de desarrollo de landing pages, automatización y soporte.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="contactanos">
+        <div class="contactanos-container">
+            <div class="contactanos-container_text">
+                <h2>Cuéntame qué necesitas.</h2>
+                <p>Te respondo yo, no un bot. Primera llamada sin costo.</p>
+                <button>Contactanos</button>
+            </div>
+            <div class="contactanos-container_form">
+   <form class="formulario" action="/contacto" method="post">
+                    <div class="campo">
+                        <label for="nombre">Tu nombre</label>
+                        <input type="text" id="nombre" name="nombre" required maxlength="100" autocomplete="name">
+                    </div>
+
+
+          <div class="campo">
+  <label for="correo">Tu correo</label>
+  <input type="email" id="correo" name="correo" required maxlength="150" autocomplete="email">
+</div>
+
+                            <div class="campo">
+            <label for="mensaje">Cuéntame qué necesitas</label>
+            <textarea id="mensaje" name="mensaje" rows="4" required maxlength="2000"></textarea>
+        </div>
+          <button type="submit" class="btn-enviar">Enviar</button>
+                </form>
+
+
+            </div>
+        </div>
+
+    </section>
 
 </body>
 
