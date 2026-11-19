@@ -8,10 +8,19 @@ app = FastAPI() #creamos la app y la declaramos
 
 @app.post("/contacto")
 def contacto(
-    nombre: str = Form(...),
-    correo: str = Form(...),
-    mensaje: str = Form(...)
+    nombre: str = Form(...,max_length=100),
+    correo: str = Form(...,max_length=150),
+    mensaje: str = Form(...,max_length=200),
+    website: str = Form("")
 ):
-    print("Nuevo mensaje:", nombre, correo, mensaje)
-    return RedirectResponse("/?enviado=ok#contacto", status_code=303)
+    if website:
+        return  RedirectResponse("/?enviado=ok#contacto", status_code=303)
+    nombre = nombre.strip()
+    correo = correo.strip()
+    mensaje = mensaje.strip()
+
+    if not nombre or not mensaje or "@" not in correo:
+        return RedirectResponse("/?enviado=error#contacto", status_code=303)
+        print("Nuevo mensaje:", nombre, correo, mensaje)
+
 app.mount("/", StaticFiles(directory="static", html=True), name="static")

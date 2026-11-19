@@ -127,7 +127,15 @@
             </div>
         </div>
 
+
+        
     </section>
+
+<div class="trampa" aria-hidden="true">
+<label for="website">No llenes este campo</label>
+<input type="text" id="website" name="website" tabindex="-1"
+autocomplete="off">
+</div>
 
 <footer class="footer">
     <p>YourAutonomy</p>
@@ -139,6 +147,11 @@ const estado = new URLSearchParams(location.search).get("enviado");
 if (estado === "ok") {
 const aviso = document.getElementById("aviso");
 aviso.textContent = "¡Gracias! Te contesto pronto.";
+aviso.hidden = false;
+}
+else if (estado === "error") {
+const aviso = document.getElementById("aviso");
+aviso.textContent = "Revisa que llenaste bien tus datos e intenta de nuevo.";
 aviso.hidden = false;
 }
 </script>
