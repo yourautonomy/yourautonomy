@@ -11,48 +11,71 @@
 
   --font-titulos: 'Bricolage Grotesque', sans-serif;
   --font-texto: 'DM Sans', sans-serif;
+
+  /* Medidas responsivas: clamp(mínimo, ideal, máximo) */
+  --ancho-max: 1200px;
+  --espacio-seccion: clamp(56px, 8vw, 88px);   /* aire arriba/abajo de cada sección */
+  --margen-lateral: clamp(16px, 4vw, 24px);    /* aire a los lados */
+  --fs-h1: clamp(36px, 6vw, 60px);
+  --fs-h2: clamp(30px, 4.5vw, 44px);
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-  body {
-    font-family: var(--font-texto);
-  }
-.navbar-container{
-    width: 100%;
-    height: 100px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 30px;
-    background-color: var(--crema);
+html {
+  scroll-behavior: smooth;   /* los links #contacto bajan suave */
+}
+
+body {
+  font-family: var(--font-texto);
+  color: var(--texto);
+}
+
+/* Ninguna imagen se sale de su contenedor en pantallas chicas */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---------- Navbar ---------- */
+/* El fondo llega de orilla a orilla y el contenido se alinea con las secciones (máx. 1200px) */
+.navbar-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;                 /* en celular el botón puede bajar */
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px max(var(--margen-lateral), calc((100% - var(--ancho-max)) / 2));
+  background-color: var(--crema);
 }
 
 .navbar-name {
-    font-size: 30px;
-    font-family: var(--font-titulos);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  font-size: clamp(22px, 3vw, 30px);
+  font-family: var(--font-titulos);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
 }
 
 .btn-whatsapp {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #B4532A;          /* terracota */
-  color: #FFFFFF;
-  font-family: 'DM Sans', sans-serif;
+  background: var(--acento);
+  color: var(--blanco);
+  font-family: var(--font-texto);
   font-weight: 700;
   font-size: 15px;
   padding: 12px 20px;
-  border-radius: 999px;         /* forma de píldora */
-  text-decoration: none;        /* quita el subrayado del link */
+  border-radius: 999px;
+  text-decoration: none;
+  white-space: nowrap;             /* el texto del botón no se parte en dos líneas */
 }
 
 .btn-whatsapp i {
@@ -60,14 +83,12 @@
 }
 
 .btn-whatsapp:hover {
-  background: #973F1D;          /* un poco más oscuro al pasar el mouse */
+  background: #973F1D;
 }
-
 
 /* ---------- Sección Somos ---------- */
 .somos-container {
   width: 100%;
-  min-height: 500px;
   background-color: var(--crema);
 }
 
@@ -75,10 +96,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 64px;
-  max-width: 1200px;
+  gap: clamp(32px, 6vw, 64px);
+  max-width: var(--ancho-max);
   margin: 0 auto;
-  padding: 64px 24px;
+  padding: clamp(32px, 6vw, 64px) var(--margen-lateral);
 }
 
 /* Columna de texto */
@@ -93,8 +114,14 @@
 .somos-texto h1 {
   font-family: var(--font-titulos);
   font-weight: 800;
-  font-size: 60px;
+  font-size: var(--fs-h1);
   line-height: 1.05;
+}
+
+.somos-texto p {
+  font-size: clamp(17px, 2vw, 20px);
+  line-height: 1.6;
+  color: var(--texto-suave);
 }
 
 /* Botones */
@@ -104,15 +131,22 @@
   gap: 1rem;
 }
 
+.somos-texto_buttons #platiquemos,
+.somos-texto_buttons #ejemplo {
+  flex: 1 1 180px;                 /* crecen y se acomodan; en celular ocupan todo el ancho */
+  max-width: 240px;
+  min-height: 48px;                /* tamaño cómodo para el dedo */
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+
 .somos-texto_buttons #platiquemos {
-  width: 200px;
-  height: 40px;
-  border-radius: 10px;
   border: none;
   background-color: var(--acento);
   color: var(--blanco);
-  font-size: 15px;
-  cursor: pointer;
 }
 
 .somos-texto_buttons #platiquemos:hover {
@@ -120,19 +154,14 @@
 }
 
 .somos-texto_buttons #ejemplo {
-  width: 200px;
-  height: 40px;
-  border-radius: 10px;
-  border: 2px solid var(--crema);
+  border: 2px solid var(--borde);
   background-color: var(--blanco);
   color: var(--acento);
-  font-size: 15px;
-  cursor: pointer;
   transition: border-color 0.2s;
 }
 
 .somos-texto_buttons #ejemplo:hover {
-  border-color: black;
+  border-color: var(--texto);
 }
 
 /* Columna de imagen */
@@ -142,94 +171,87 @@
 
 .somos-img .img-ivan {
   width: 100%;
-  height: auto;
-  display: block;
   border-radius: 32px;
 }
 
-/* Celular */
-@media (max-width: 700px) {
-  .somos {
-    flex-direction: column;
-    gap: 32px;
-  }
-  .somos-texto h1 {
-    font-size: 40px;
-  }
-  .somos-img {
-    flex-basis: auto;
-    width: 100%;
-    max-width: 380px;
-  }
-}
-
-
-/*Servicios*/
-
+/* ---------- Servicios ---------- */
 .servicios {
   background-color: var(--blanco);
 }
 
 .servicios_container {
-  max-width: 1200px;
+  max-width: var(--ancho-max);
   margin: 0 auto;
-  padding: 88px 24px;
+  padding: var(--espacio-seccion) var(--margen-lateral);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
 }
 
-   .servicios .tarjeta {
-     background: var(--crema);
-     border-radius: 24px;
-     padding: 28px;
-   }
-
-
-.servicios_container h2{
-  font-size: 44px;
+.servicios_container h2 {
+  font-size: var(--fs-h2);
   font-family: var(--font-titulos);
-  text-align: left;
+  font-weight: 800;
+  text-align: center;
 }
 
 .servicios_grid {
-  width: 100%;              /* ← esta línea */
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 1.5rem;
 }
-.etiqueta{
+
+.servicios .tarjeta {
+  background: var(--crema);
+  border-radius: 24px;
+  padding: clamp(20px, 3vw, 28px);
+}
+
+.servicios .tarjeta h3 {
+  font-size: 18px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.servicios .tarjeta p {
+  line-height: 1.6;
+}
+
+.etiqueta {
+  font-weight: 700;
   color: var(--secundario);
 }
-/* ========== Sección Experiencia ========== */
+
+/* ---------- Experiencia ---------- */
 .experiencia {
   background-color: var(--crema);
 }
 
 .experiencia-container {
-  max-width: 1200px;
+  max-width: var(--ancho-max);
   margin: 0 auto;
-  padding: 88px 24px;
+  padding: var(--espacio-seccion) var(--margen-lateral);
 }
 
 .experiencia-container h2 {
   font-family: var(--font-titulos);
   font-weight: 800;
-  font-size: 40px;
-  margin-bottom: 40px;
+  font-size: var(--fs-h2);
+  margin-bottom: clamp(24px, 4vw, 40px);
 }
 
 .experiencia-container_grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
 }
 
 .experiencia .tarjeta {
   background-color: var(--blanco);
   border-radius: 24px;
-  padding: 28px;
+  padding: clamp(20px, 3vw, 28px);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -237,12 +259,11 @@
 
 .experiencia .tarjeta-icono {
   width: 100%;
-  height: 180px;
+  height: clamp(140px, 18vw, 180px);
   object-fit: contain;
   background-color: var(--crema);
   border-radius: 16px;
-  padding: 28px;
-  box-sizing: border-box;
+  padding: 24px;
   margin-bottom: 8px;
 }
 
@@ -256,26 +277,26 @@
   color: var(--texto-suave);
   line-height: 1.6;
 }
-/* ========== contactanos ========== */
 
-.contactanos{
+/* ---------- Contáctanos ---------- */
+.contactanos {
   background-color: var(--secundario);
   color: var(--blanco);
 }
 
-.contactanos-container{
- max-width: 1200px;
+.contactanos-container {
+  max-width: var(--ancho-max);
   margin: 0 auto;
-  padding: 88px 24px;          /* espacio arriba/abajo y a los lados */
+  padding: var(--espacio-seccion) var(--margen-lateral);
   display: flex;
-  flex-wrap: wrap;             /* en celular el form se va abajo */
-  gap: 48px;
+  flex-wrap: wrap;                 /* en celular el form se va abajo */
+  gap: clamp(32px, 5vw, 48px);
   align-items: center;
 }
 
 /* Columna de texto */
 .contactanos-container_text {
-  flex: 1 1 360px;
+  flex: 1 1 320px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -285,7 +306,7 @@
 .contactanos-container_text h2 {
   font-family: var(--font-titulos);
   font-weight: 800;
-  font-size: 44px;
+  font-size: var(--fs-h2);
   line-height: 1.05;
   color: var(--blanco);
 }
@@ -300,6 +321,7 @@
   color: var(--secundario);
   border: 0;
   padding: 16px 24px;
+  min-height: 48px;
   border-radius: 999px;
   font-weight: 700;
   font-size: 16px;
@@ -309,20 +331,20 @@
 
 /* Columna del formulario */
 .contactanos-container_form {
-  flex: 1 1 400px;
+  flex: 1 1 360px;
+  min-width: 0;                    /* evita que el form se salga en pantallas chicas */
 }
 
 .formulario {
   background: var(--blanco);
-  color: var(--texto);          /* importante: la sección pone el texto en blanco */
-  padding: 32px;
+  color: var(--texto);
+  padding: clamp(20px, 4vw, 32px);
   border-radius: 28px;
   display: flex;
   flex-direction: column;
-  gap: 18px;                    /* espacio entre cada campo */
+  gap: 18px;
 }
 
-/* Cada campo: etiqueta arriba, input abajo */
 .formulario .campo {
   display: flex;
   flex-direction: column;
@@ -334,7 +356,6 @@
   font-size: 15px;
 }
 
-/* Inputs y textarea */
 .formulario input,
 .formulario textarea {
   width: 100%;
@@ -343,17 +364,15 @@
   border-radius: 14px;
   background: var(--crema);
   color: var(--texto);
-  font-size: 16px;              /* 16px evita el zoom automático en iPhone */
-  font-family: inherit;         /* usa DM Sans y no la letra del navegador */
-  box-sizing: border-box;
+  font-size: 16px;                 /* 16px evita el zoom automático en iPhone */
+  font-family: inherit;
 }
 
 .formulario textarea {
-  resize: vertical;             /* solo se puede estirar hacia abajo */
+  resize: vertical;
   min-height: 120px;
 }
 
-/* Cuando el usuario da clic en un campo */
 .formulario input:focus,
 .formulario textarea:focus {
   outline: 2px solid var(--secundario);
@@ -361,12 +380,12 @@
   background: var(--blanco);
 }
 
-/* Botón de enviar */
 .btn-enviar {
   background: var(--acento);
   color: var(--blanco);
   border: 0;
   padding: 16px 24px;
+  min-height: 48px;
   border-radius: 999px;
   font-weight: 700;
   font-size: 16px;
@@ -379,24 +398,90 @@
   background: #973F1D;
 }
 
-/* Celular: un poco menos de relleno */
-@media (max-width: 700px) {
-  .formulario {
-    padding: 24px;
+/* Mensaje de gracias / error */
+#aviso {
+  background: var(--texto-sobre-secundario);
+  color: var(--secundario);
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-weight: 700;
+}
+
+/* ---------- Footer ---------- */
+/* Fondo de orilla a orilla, contenido alineado con las secciones */
+.footer {
+  width: 100%;
+  background-color: var(--blanco);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 2rem max(var(--margen-lateral), calc((100% - var(--ancho-max)) / 2));
+  text-align: center;
+  color: var(--texto-suave);
+  font-size: 14px;
+}
+
+/* ---------- Trampa anti-spam ---------- */
+.trampa {
+  position: absolute;
+  left: -9999px;
+}
+
+/* =========================================================
+   TABLET (hasta 900px)
+   ========================================================= */
+@media (max-width: 900px) {
+  .somos-img {
+    flex-basis: 300px;             /* la foto se hace un poco más chica */
   }
 }
 
+/* =========================================================
+   CELULAR (hasta 700px)
+   ========================================================= */
+@media (max-width: 700px) {
+  /* Hero: la foto se va abajo del texto */
+  .somos {
+    flex-direction: column;
+    align-items: stretch;
+  }
 
-.footer{
-  max-width: 1200px;
-  margin: 0 auto;
-  background-color: var(--blanco);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+  .somos-texto {
+    max-width: none;
+  }
+
+  .somos-img {
+    flex-basis: auto;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .somos-texto_buttons #platiquemos,
+  .somos-texto_buttons #ejemplo {
+    max-width: none;               /* botones a todo lo ancho, fáciles de tocar */
+  }
+
+  /* Navbar: botón de WhatsApp más compacto */
+  .btn-whatsapp {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
 }
 
-/*Trampa*/
+/* =========================================================
+   CELULAR CHICO (hasta 400px)
+   ========================================================= */
+@media (max-width: 400px) {
+  /* Solo el ícono de WhatsApp para que quepa junto al nombre */
+  .btn-whatsapp {
+    font-size: 0;                  /* oculta el texto */
+    padding: 12px;
+  }
 
-.trampa { position: absolute; left: -9999px; }
+  .btn-whatsapp i {
+    font-size: 22px;
+  }
+}
